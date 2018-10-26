@@ -4,7 +4,7 @@
          verbose="true">
 
     <testsuites>
-        <testsuite name="Gent\Services-Vesta">
+        <testsuite name="DigipolisGent\Value">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
