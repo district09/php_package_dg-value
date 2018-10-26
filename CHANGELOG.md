@@ -2,7 +2,7 @@
 
 All Notable changes to the `digipolisgent/values` package.
 
-## [Unreleased]
+## [1.0.0]
 
 ### Added
 
@@ -12,4 +12,5 @@ All Notable changes to the `digipolisgent/values` package.
 - Added the CollectionInterface.
 - Added the CollectionAbstract class.
 
-[Unreleased]: https://github.com/digipolisgent/php_package_dg-values/compare/master...develop
+[1.0.0]: https://github.com/digipolisgent/php_package_dg-value/tree/1.0.0
+[Unreleased]: https://github.com/digipolisgent/php_package_dg-value/compare/master...develop
