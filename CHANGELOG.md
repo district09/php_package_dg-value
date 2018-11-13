@@ -2,6 +2,12 @@
 
 All Notable changes to the `digipolisgent/value` package.
 
+## [Unreleased]
+
+### Added
+
+- Added the ValueToArrayInterface.
+
 ## [1.0.0]
 
 ### Added
