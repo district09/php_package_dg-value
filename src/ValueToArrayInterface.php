@@ -15,5 +15,5 @@ interface ValueToArrayInterface
      * @return array
      *   The data array representing the value object.
      */
-    public static function toArray();
+    public function toArray();
 }
