@@ -3,8 +3,15 @@
 Package containing the interfaces and abstract implementations to support the
 usage of Value objects in other packages and projects.
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/316c85fff5a298e6450c/maintainability)](https://codeclimate.com/repos/5bd2f0f01155160cf60025f7/maintainability)
-[![Maintainability](https://api.codeclimate.com/v1/badges/316c85fff5a298e6450c/test_coverage)](https://codeclimate.com/repos/5bd2f0f01155160cf60025f7/test_coverage)
+[![Latest Stable Version][ico-version]][link-packagist]
+[![Latest Unstable Version][ico-version-unstable]][link-packagist]
+[![Total Downloads][ico-downloads]][link-packagist]
+[![License][ico-license]][link-license]
+
+[![Build Status][ico-travis]][link-travis]
+[![Maintainability][ico-maintainability]][link-maintainability]
+[![Test Coverage][ico-test-coverage]][link-test-coverage]
+![PHP from Packagist][ico-php-version]
 
 ## Usage
 
@@ -51,3 +58,22 @@ vendor/bin/phpunit
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more
 information.
+
+[ico-version]: https://img.shields.io/packagist/v/digipolisgent/value.svg?style=flat-square
+[ico-version-unstable]: https://img.shields.io/packagist/vpre/digipolisgent/value.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/digipolisgent/value.svg?style=flat-square
+[ico-license]: https://img.shields.io/github/license/digipolisgent/php_package_dg-value.svg?style=flat-square
+[ico-travis]: https://api.travis-ci.com/digipolisgent/php_package_dg-value.svg?branch=master
+[ico-maintainability]: https://api.codeclimate.com/v1/badges/316c85fff5a298e6450c/maintainability
+[ico-test-coverage]: https://api.codeclimate.com/v1/badges/316c85fff5a298e6450c/test_coverage
+[ico-php-version]: https://img.shields.io/packagist/php-v/digipolisgent/value.svg?style=flat-square
+[ico-php7]: https://php7ready.timesplinter.ch/digipolisgent/php_package_dg-value/master/badge.svg
+
+[link-packagist]: https://packagist.org/packages/digipolisgent/value
+[link-license]: LICENSE.md
+[link-travis]: https://travis-ci.com/digipolisgent/php_package_dg-value
+[link-maintainability]: https://codeclimate.com/repos/5bd2f0f01155160cf60025f7/maintainability
+[link-test-coverage]: https://codeclimate.com/repos/5bd2f0f01155160cf60025f7/test_coverage
+[link-php7]: https://travis-ci.org/digipolisgent/php_package_dg-value
+[link-author-digipolisgent]: https://github.com/digipolisgent
+[link-contributors]: ../../contributors
