@@ -2,6 +2,12 @@
 
 All Notable changes to the `digipolisgent/value` package.
 
+## [Unreleased]
+
+### Changed
+
+- Made the package open source.
+
 ## [1.1.1]
 
 ### Fixed
