@@ -24,9 +24,9 @@ This package contains the following interfaces:
   method to extract its data as an array.
 * `CollectonInterface` : the basic interface for a collection of values of the
   same type.
-  
-And the following abstract implementations:   
-  
+
+And the following abstract implementations:
+
 * `ValueAbstract` : Abstract implementation of the `ValueInterface`, implements
   only the `sameValueTypeAs()` method.
 * `CollectionAbstract` : Abstract implementation of the `CollectonInterface`,
