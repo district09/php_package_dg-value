@@ -7,7 +7,7 @@ maintains this project.
 
 If you think that you have found a security issue in this project, do **not**
 use the issue tracker and do **not** publish it publicly. Instead, all security
-issues must be sent to security [at] gent.be.
+issues must be sent to security [at] digipolis.gent.
 
 ## Resolving Process
 
