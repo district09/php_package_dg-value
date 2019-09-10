@@ -18,11 +18,32 @@ class ValueAbstractTest extends TestCase
      */
     public function testTwoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName()
     {
-        /* @var $value1 \DigipolisGent\Value\ValueInterface */
-        $value1 = $this->getMockForAbstractClass(ValueAbstract::class, [], 'ClassName1');
+        $value1 = new class extends ValueAbstract {
+
+            public function __toString(): string
+            {
+                return '';
+            }
+
+            public function sameValueAs(ValueInterface $object): bool
+            {
+                return false;
+            }
+        };
 
         /* @var $value2 \DigipolisGent\Value\ValueInterface */
-        $value2 = $this->getMockForAbstractClass(ValueAbstract::class, [], 'ClassName2');
+        $value2 = new class extends ValueAbstract {
+
+            public function __toString(): string
+            {
+                return '';
+            }
+
+            public function sameValueAs(ValueInterface $object): bool
+            {
+                return false;
+            }
+        };
 
         $this->assertFalse($value1->sameValueTypeAs($value2));
     }
@@ -32,12 +53,25 @@ class ValueAbstractTest extends TestCase
      */
     public function testTwoValuesAreTheSameTypeIfTheyHaveTheSameClassName()
     {
-        /* @var $value1 \DigipolisGent\Value\ValueInterface */
-        $value1 = $this->getMockForAbstractClass(ValueAbstract::class, [], 'ClassTypeOne');
+        // Multiple anonymous classes created in the same position (say, a loop)
+        // can be compared with `==`, but those created elsewhere will not match
+        // as they will have a different name.
+        $values = [];
+        for ($i=0; $i < 2; $i++) {
+            $values[$i] = new class extends ValueAbstract {
 
-        /* @var $value2 \DigipolisGent\Value\ValueInterface */
-        $value2 = $this->getMockForAbstractClass(ValueAbstract::class, [], 'ClassTypeOne');
+                public function __toString(): string
+                {
+                    return '';
+                }
 
-        $this->assertTrue($value1->sameValueTypeAs($value2));
+                public function sameValueAs(ValueInterface $object): bool
+                {
+                    return false;
+                }
+            };
+        }
+
+        $this->assertTrue($values[0]->sameValueTypeAs($values[1]));
     }
 }

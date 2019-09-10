@@ -2,6 +2,8 @@
 
 namespace DigipolisGent\Value;
 
+use \ArrayIterator;
+
 /**
  * Object value representing a collection of items.
  *
@@ -50,7 +52,7 @@ abstract class CollectionAbstract extends ValueAbstract implements CollectionInt
      */
     public function getIterator()
     {
-        return new \ArrayIterator($this->values);
+        return new ArrayIterator($this->values);
     }
 
     /**
