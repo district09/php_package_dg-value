@@ -12,7 +12,7 @@ All Notable changes to the `digipolisgent/value` package.
 
 ### Fixed
 
-- Removed static from the toArray() method. 
+- Removed static from the toArray() method.
 
 ## [1.1.0]
 
