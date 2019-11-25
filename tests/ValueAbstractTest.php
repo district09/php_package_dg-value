@@ -31,11 +31,10 @@ class ValueAbstractTest extends TestCase
 
             public function sameValueAs(ValueInterface $object): bool
             {
-                return false;
+                return $this->sameValueTypeAs($object);
             }
         };
 
-        /* @var $value2 \DigipolisGent\Value\ValueInterface */
         $value2 = new class extends ValueAbstract {
 
             public function __toString(): string
@@ -45,11 +44,11 @@ class ValueAbstractTest extends TestCase
 
             public function sameValueAs(ValueInterface $object): bool
             {
-                return false;
+                return $this->sameValueTypeAs($object);
             }
         };
 
-        $this->assertFalse($value1->sameValueTypeAs($value2));
+        $this->assertFalse($value1->sameValueAs($value2));
     }
 
     /**
@@ -73,11 +72,11 @@ class ValueAbstractTest extends TestCase
 
                 public function sameValueAs(ValueInterface $object): bool
                 {
-                    return false;
+                    return $this->sameValueTypeAs($object);
                 }
             };
         }
 
-        $this->assertTrue($values[0]->sameValueTypeAs($values[1]));
+        $this->assertTrue($values[0]->sameValueAs($values[1]));
     }
 }

@@ -8,9 +8,14 @@ All Notable changes to the `digipolisgent/value` package.
 
 - Bumped minimum PHP version to 7.2.
 - Made the code strict.
-- Tagged ValueFromArrayInterface and ValueToArrayInterface as
-  deprecated: better pattern is using Normalizers to transform data into
-  ValueObjects and Serializers to transform ValueObjects into arrays.
+
+### Removed
+
+- Removed ValueFromArrayInterface and ValueToArrayInterface: better
+  pattern is using Normalizers to transform data into ValueObjects and 
+  Serializers to transform ValueObjects into arrays.
+  See https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/tree/develop/src/Normalizer/FromJson
+  as example how to normalize data into value objects.
 
 ## [1.1.2]
 
