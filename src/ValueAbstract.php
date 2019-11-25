@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigipolisGent\Value;
 
 /**
@@ -14,8 +16,8 @@ abstract class ValueAbstract implements ValueInterface
     /**
      * @inheritdoc
      */
-    public function sameValueTypeAs(ValueInterface $object)
+    public function sameValueTypeAs(ValueInterface $object): bool
     {
-        return \get_class($this) === \get_class($object);
+        return get_class($this) === get_class($object);
     }
 }

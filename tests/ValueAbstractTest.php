@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigipolisGent\Test\Value;
 
 use DigipolisGent\Value\ValueAbstract;
@@ -15,8 +17,10 @@ class ValueAbstractTest extends TestCase
 {
     /**
      * Two values are not the same type if they have not the same class name.
+     *
+     * @test
      */
-    public function testTwoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName()
+    public function twoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName(): void
     {
         $value1 = new class extends ValueAbstract {
 
@@ -50,8 +54,10 @@ class ValueAbstractTest extends TestCase
 
     /**
      * Two values are the same type if they have the same class name.
+     *
+     * @test
      */
-    public function testTwoValuesAreTheSameTypeIfTheyHaveTheSameClassName()
+    public function twoValuesAreTheSameTypeIfTheyHaveTheSameClassName(): void
     {
         // Multiple anonymous classes created in the same position (say, a loop)
         // can be compared with `==`, but those created elsewhere will not match

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigipolisGent\Value;
 
 /**
@@ -24,7 +26,7 @@ interface ValueInterface
      * @return bool
      *   True if the value type are the same, false if not.
      */
-    public function sameValueTypeAs(ValueInterface $object);
+    public function sameValueTypeAs(ValueInterface $object): bool;
 
     /**
      * Compare two Value objects and tells whether they can be considered equal.
@@ -39,7 +41,7 @@ interface ValueInterface
      * @return bool
      *   True if the objects are equal, false if not.
      */
-    public function sameValueAs(ValueInterface $object);
+    public function sameValueAs(ValueInterface $object): bool;
 
     /**
      * Returns a string representation of the value object.
@@ -47,5 +49,5 @@ interface ValueInterface
      * @return string
      *   The string representing the value object.
      */
-    public function __toString();
+    public function __toString(): string;
 }

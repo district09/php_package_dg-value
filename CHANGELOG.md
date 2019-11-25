@@ -2,6 +2,16 @@
 
 All Notable changes to the `digipolisgent/value` package.
 
+## [Unreleased]
+
+### Changed
+
+- Bumped minimum PHP version to 7.2.
+- Made the code strict.
+- Tagged ValueFromArrayInterface and ValueToArrayInterface as
+  deprecated: better pattern is using Normalizers to transform data into
+  ValueObjects and Serializers to transform ValueObjects into arrays.
+
 ## [1.1.2]
 
 ### Changed

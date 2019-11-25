@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigipolisGent\Value;
 
 /**
  * Interface adding the possibility to create the value object from array data.
  *
  * @package DigipolisGent\Value
+ *
+ * @deprecated Use normalizers to transfer data into value objects.
  */
 interface ValueFromArrayInterface
 {
@@ -17,5 +21,5 @@ interface ValueFromArrayInterface
      *
      * @return ValueInterface
      */
-    public static function fromArray(array $data);
+    public static function fromArray(array $data): ValueInterface;
 }

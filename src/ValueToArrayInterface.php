@@ -1,11 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigipolisGent\Value;
 
 /**
  * Interface adding the possibility to get an array representation of the value.
  *
  * @package DigipolisGent\Value
+ *
+ * @deprecated Use serializers to transfer data into arrays.
  */
 interface ValueToArrayInterface
 {
@@ -15,5 +19,5 @@ interface ValueToArrayInterface
      * @return array
      *   The data array representing the value object.
      */
-    public function toArray();
+    public function toArray(): array;
 }
