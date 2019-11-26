@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigipolisGent\Test\Value;
 
 use DigipolisGent\Value\ValueAbstract;
@@ -15,8 +17,10 @@ class ValueAbstractTest extends TestCase
 {
     /**
      * Two values are not the same type if they have not the same class name.
+     *
+     * @test
      */
-    public function testTwoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName()
+    public function twoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName(): void
     {
         $value1 = new class extends ValueAbstract {
 
@@ -27,11 +31,10 @@ class ValueAbstractTest extends TestCase
 
             public function sameValueAs(ValueInterface $object): bool
             {
-                return false;
+                return $this->sameValueTypeAs($object);
             }
         };
 
-        /* @var $value2 \DigipolisGent\Value\ValueInterface */
         $value2 = new class extends ValueAbstract {
 
             public function __toString(): string
@@ -41,17 +44,19 @@ class ValueAbstractTest extends TestCase
 
             public function sameValueAs(ValueInterface $object): bool
             {
-                return false;
+                return $this->sameValueTypeAs($object);
             }
         };
 
-        $this->assertFalse($value1->sameValueTypeAs($value2));
+        $this->assertFalse($value1->sameValueAs($value2));
     }
 
     /**
      * Two values are the same type if they have the same class name.
+     *
+     * @test
      */
-    public function testTwoValuesAreTheSameTypeIfTheyHaveTheSameClassName()
+    public function twoValuesAreTheSameTypeIfTheyHaveTheSameClassName(): void
     {
         // Multiple anonymous classes created in the same position (say, a loop)
         // can be compared with `==`, but those created elsewhere will not match
@@ -67,11 +72,11 @@ class ValueAbstractTest extends TestCase
 
                 public function sameValueAs(ValueInterface $object): bool
                 {
-                    return false;
+                    return $this->sameValueTypeAs($object);
                 }
             };
         }
 
-        $this->assertTrue($values[0]->sameValueTypeAs($values[1]));
+        $this->assertTrue($values[0]->sameValueAs($values[1]));
     }
 }
