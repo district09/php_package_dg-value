@@ -12,9 +12,9 @@ All Notable changes to the `digipolisgent/value` package.
 ### Removed
 
 - Removed ValueFromArrayInterface and ValueToArrayInterface: better
-  pattern is using Normalizers to transform data into ValueObjects and 
-  Serializers to transform ValueObjects into arrays.
-  See https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/tree/develop/src/Normalizer/FromJson
+  pattern is using Normalizers to transform data into ValueObjects and
+  Serializers to transform ValueObjects into arrays. See the
+  [Flanders Basicregisters package](https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/tree/develop/src/Normalizer/FromJson)
   as example how to normalize data into value objects.
 
 ## [1.1.2]
