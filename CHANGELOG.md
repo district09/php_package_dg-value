@@ -2,6 +2,21 @@
 
 All Notable changes to the `digipolisgent/value` package.
 
+## [2.0.0]
+
+### Changed
+
+- Bumped minimum PHP version to 7.2.
+- Made the code strict.
+
+### Removed
+
+- Removed ValueFromArrayInterface and ValueToArrayInterface: better
+  pattern is using Normalizers to transform data into ValueObjects and
+  Serializers to transform ValueObjects into arrays. See the
+  [Flanders Basicregisters package](https://github.com/digipolisgent/php_package_dg-flanders-basicregisters/tree/develop/src/Normalizer/FromJson)
+  as example how to normalize data into value objects.
+
 ## [1.1.2]
 
 ### Changed
@@ -12,7 +27,7 @@ All Notable changes to the `digipolisgent/value` package.
 
 ### Fixed
 
-- Removed static from the toArray() method. 
+- Removed static from the toArray() method.
 
 ## [1.1.0]
 
@@ -30,6 +45,7 @@ All Notable changes to the `digipolisgent/value` package.
 - Added the CollectionInterface.
 - Added the CollectionAbstract class.
 
+[2.0.0]: https://github.com/digipolisgent/php_package_dg-value/compare/1.1.2...2.0.0
 [1.1.2]: https://github.com/digipolisgent/php_package_dg-value/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/digipolisgent/php_package_dg-value/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/digipolisgent/php_package_dg-value/compare/1.0.0...1.1.0

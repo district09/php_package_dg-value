@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace DigipolisGent\Test\Value;
 
 use DigipolisGent\Value\ValueAbstract;
@@ -15,29 +17,66 @@ class ValueAbstractTest extends TestCase
 {
     /**
      * Two values are not the same type if they have not the same class name.
+     *
+     * @test
      */
-    public function testTwoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName()
+    public function twoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName(): void
     {
-        /* @var $value1 \DigipolisGent\Value\ValueInterface */
-        $value1 = $this->getMockForAbstractClass(ValueAbstract::class, [], 'ClassName1');
+        $value1 = new class extends ValueAbstract {
 
-        /* @var $value2 \DigipolisGent\Value\ValueInterface */
-        $value2 = $this->getMockForAbstractClass(ValueAbstract::class, [], 'ClassName2');
+            public function __toString(): string
+            {
+                return '';
+            }
 
-        $this->assertFalse($value1->sameValueTypeAs($value2));
+            public function sameValueAs(ValueInterface $object): bool
+            {
+                return $this->sameValueTypeAs($object);
+            }
+        };
+
+        $value2 = new class extends ValueAbstract {
+
+            public function __toString(): string
+            {
+                return '';
+            }
+
+            public function sameValueAs(ValueInterface $object): bool
+            {
+                return $this->sameValueTypeAs($object);
+            }
+        };
+
+        $this->assertFalse($value1->sameValueAs($value2));
     }
 
     /**
      * Two values are the same type if they have the same class name.
+     *
+     * @test
      */
-    public function testTwoValuesAreTheSameTypeIfTheyHaveTheSameClassName()
+    public function twoValuesAreTheSameTypeIfTheyHaveTheSameClassName(): void
     {
-        /* @var $value1 \DigipolisGent\Value\ValueInterface */
-        $value1 = $this->getMockForAbstractClass(ValueAbstract::class, [], 'ClassTypeOne');
+        // Multiple anonymous classes created in the same position (say, a loop)
+        // can be compared with `==`, but those created elsewhere will not match
+        // as they will have a different name.
+        $values = [];
+        for ($i=0; $i < 2; $i++) {
+            $values[$i] = new class extends ValueAbstract {
 
-        /* @var $value2 \DigipolisGent\Value\ValueInterface */
-        $value2 = $this->getMockForAbstractClass(ValueAbstract::class, [], 'ClassTypeOne');
+                public function __toString(): string
+                {
+                    return '';
+                }
 
-        $this->assertTrue($value1->sameValueTypeAs($value2));
+                public function sameValueAs(ValueInterface $object): bool
+                {
+                    return $this->sameValueTypeAs($object);
+                }
+            };
+        }
+
+        $this->assertTrue($values[0]->sameValueAs($values[1]));
     }
 }
