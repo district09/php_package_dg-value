@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Test\Value;
 
-use DigipolisGent\Value\ValueAbstract;
-use DigipolisGent\Value\ValueInterface;
+use DigipolisGent\Test\Value\Stub\OtherValueTypeStub;
+use DigipolisGent\Test\Value\Stub\ValueStub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,33 +22,10 @@ class ValueAbstractTest extends TestCase
      */
     public function twoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName(): void
     {
-        $value1 = new class extends ValueAbstract {
+        $value1 = new ValueStub('Value 1');
+        $value2 = new OtherValueTypeStub('Value 1');
 
-            public function __toString(): string
-            {
-                return '';
-            }
-
-            public function sameValueAs(ValueInterface $object): bool
-            {
-                return $this->sameValueTypeAs($object);
-            }
-        };
-
-        $value2 = new class extends ValueAbstract {
-
-            public function __toString(): string
-            {
-                return '';
-            }
-
-            public function sameValueAs(ValueInterface $object): bool
-            {
-                return $this->sameValueTypeAs($object);
-            }
-        };
-
-        $this->assertFalse($value1->sameValueAs($value2));
+        self::assertFalse($value1->sameValueAs($value2));
     }
 
     /**
@@ -58,25 +35,9 @@ class ValueAbstractTest extends TestCase
      */
     public function twoValuesAreTheSameTypeIfTheyHaveTheSameClassName(): void
     {
-        // Multiple anonymous classes created in the same position (say, a loop)
-        // can be compared with `==`, but those created elsewhere will not match
-        // as they will have a different name.
-        $values = [];
-        for ($i=0; $i < 2; $i++) {
-            $values[$i] = new class extends ValueAbstract {
+        $value1 = new ValueStub('Value 1');
+        $value2 = new ValueStub('Value 1');
 
-                public function __toString(): string
-                {
-                    return '';
-                }
-
-                public function sameValueAs(ValueInterface $object): bool
-                {
-                    return $this->sameValueTypeAs($object);
-                }
-            };
-        }
-
-        $this->assertTrue($values[0]->sameValueAs($values[1]));
+        self::assertTrue($value1->sameValueAs($value2));
     }
 }

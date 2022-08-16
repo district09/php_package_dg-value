@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Value;
 
-use \ArrayIterator;
+use ArrayIterator;
 
 /**
  * Object value representing a collection of items.
@@ -18,7 +18,7 @@ abstract class CollectionAbstract extends ValueAbstract implements CollectionInt
      *
      * @var \DigipolisGent\Value\ValueInterface[]
      */
-    protected $values = [];
+    protected array $values = [];
 
     /**
      * Compare two Collection objects and check if they can be considered equal.
@@ -68,6 +68,7 @@ abstract class CollectionAbstract extends ValueAbstract implements CollectionInt
      */
     protected function sameCollectionCount(CollectionInterface $collection): bool
     {
+        /** @var \ArrayIterator $collectionIterator */
         $collectionIterator = $collection->getIterator();
         return $this->getIterator()->count() === $collectionIterator->count();
     }
@@ -83,6 +84,7 @@ abstract class CollectionAbstract extends ValueAbstract implements CollectionInt
      */
     protected function sameCollectionValues(CollectionInterface $collection): bool
     {
+        /** @var \ArrayIterator $collectionIterator */
         $collectionIterator = $collection->getIterator();
         foreach ($this as $index => $item) {
             if (!$collectionIterator->offsetExists($index)) {

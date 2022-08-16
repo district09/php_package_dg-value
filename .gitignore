@@ -1,4 +1,4 @@
-# Build directory is created during PhpUnit test runs.
+# Build directory is created during PHPUnit test runs.
 /build
 .phpunit.result.cache
 
@@ -10,3 +10,7 @@
 
 # Exclude the examples config file.
 /examples/config.php
+
+# Exclude local config files.
+/*.local.*
+/*.qa-php.*
