@@ -16,7 +16,7 @@
     ],
     "homepage": "https://github.com/digipolisgent/php_package_dg-value",
     "require": {
-        "php": "^7.4"
+        "php": "^7.2"
     },
     "require-dev": {
         "district09/qa-php": "1.x-dev"
