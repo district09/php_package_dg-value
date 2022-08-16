@@ -4,9 +4,14 @@ All Notable changes to the `digipolisgent/value` package.
 
 ## [Unreleased]
 
+### Added
+
+- Added support for PHP 8.x.
+- Added qa-php package to add the QA tools.
+
 ### Changed
 
-- Add qa-php package to add the QA tools.
+- Bumped minimum PHP version to 7.4.
 - Replace test mocks by actual stub classes.
 
 ## [2.0.0]
