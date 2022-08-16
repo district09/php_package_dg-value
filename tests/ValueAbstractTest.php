@@ -23,7 +23,6 @@ class ValueAbstractTest extends TestCase
     public function twoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName(): void
     {
         $value1 = new class extends ValueAbstract {
-
             public function __toString(): string
             {
                 return '';
@@ -36,7 +35,6 @@ class ValueAbstractTest extends TestCase
         };
 
         $value2 = new class extends ValueAbstract {
-
             public function __toString(): string
             {
                 return '';
@@ -62,9 +60,8 @@ class ValueAbstractTest extends TestCase
         // can be compared with `==`, but those created elsewhere will not match
         // as they will have a different name.
         $values = [];
-        for ($i=0; $i < 2; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             $values[$i] = new class extends ValueAbstract {
-
                 public function __toString(): string
                 {
                     return '';

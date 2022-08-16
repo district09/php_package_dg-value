@@ -15,5 +15,4 @@ use IteratorAggregate;
  */
 interface CollectionInterface extends IteratorAggregate, ValueInterface
 {
-
 }

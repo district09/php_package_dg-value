@@ -17,7 +17,6 @@ use PHPUnit\Framework\TestCase;
  */
 class CollectionAbstractTest extends TestCase
 {
-
     /**
      * Test if the iterator method returns an ArrayIterator.
      *
