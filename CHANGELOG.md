@@ -2,6 +2,13 @@
 
 All Notable changes to the `digipolisgent/value` package.
 
+## [Unreleased]
+
+### Changed
+
+- Add qa-php package to add the QA tools.
+- Replace test mocks by actual stub classes.
+
 ## [2.0.0]
 
 ### Changed
