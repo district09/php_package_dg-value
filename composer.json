@@ -14,7 +14,7 @@
             "email": "peter.decuyper@distict09.gent"
         }
     ],
-    "homepage": "https://github.com/digipolisgent/php_package_dg-value",
+    "homepage": "https://github.com/district09/php_package_dg-value",
     "require": {
         "php": "^7.4 || ^8.0"
     },
