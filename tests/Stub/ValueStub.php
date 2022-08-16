@@ -17,7 +17,7 @@ class ValueStub extends ValueAbstract
      *
      * @param string $value;
      */
-    private string $value;
+    private $value;
 
     /**
      * Create from string.

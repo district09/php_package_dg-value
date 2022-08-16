@@ -16,10 +16,10 @@
     ],
     "homepage": "https://github.com/digipolisgent/php_package_dg-value",
     "require": {
-        "php": "^7.2"
+        "php": "^7.3"
     },
     "require-dev": {
-        "district09/qa-php": "1.x-dev"
+        "district09/qa-php": "^1.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -35,9 +35,9 @@
     },
     "config": {
         "allow-plugins": {
+            "ergebnis/composer-normalize": true,
             "ocramius/package-versions": true,
-            "phpro/grumphp-shim": true,
-            "ergebnis/composer-normalize": true
+            "phpro/grumphp-shim": true
         }
     },
     "extra": {
