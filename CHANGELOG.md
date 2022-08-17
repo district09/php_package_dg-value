@@ -2,6 +2,18 @@
 
 All Notable changes to the `digipolisgent/value` package.
 
+## [3.0.0]
+
+### Added
+
+- Added support for PHP 8.x.
+- Added qa-php package to add the QA tools.
+
+### Changed
+
+- Bumped minimum PHP version to 7.4.
+- Replace test mocks by actual stub classes.
+
 ## [2.0.0]
 
 ### Changed
@@ -45,6 +57,7 @@ All Notable changes to the `digipolisgent/value` package.
 - Added the CollectionInterface.
 - Added the CollectionAbstract class.
 
+[3.0.0]: https://github.com/digipolisgent/php_package_dg-value/compare/2.0.0...3.0.0
 [2.0.0]: https://github.com/digipolisgent/php_package_dg-value/compare/1.1.2...2.0.0
 [1.1.2]: https://github.com/digipolisgent/php_package_dg-value/compare/1.1.1...1.1.2
 [1.1.1]: https://github.com/digipolisgent/php_package_dg-value/compare/1.1.0...1.1.1

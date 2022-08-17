@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace DigipolisGent\Test\Value;
 
-use ArrayIterator;
-use DigipolisGent\Value\CollectionAbstract;
-use DigipolisGent\Value\CollectionInterface;
-use DigipolisGent\Value\ValueInterface;
+use DigipolisGent\Test\Value\Stub\CollectionStub;
+use DigipolisGent\Test\Value\Stub\OtherCollectionStub;
+use DigipolisGent\Test\Value\Stub\ValueStub;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,72 +16,58 @@ use PHPUnit\Framework\TestCase;
  */
 class CollectionAbstractTest extends TestCase
 {
-
     /**
-     * Test if the iterator method returns an ArrayIterator.
+     * Collection provides iterator containing all values.
      *
      * @test
      */
-    public function getIteratorMethodReturnsArrayIterator(): void
+    public function iteratorContainsAllCollectionValues(): void
     {
-        $collection = $this->getMockForAbstractClass(CollectionAbstract::class);
-        $this->assertInstanceOf(ArrayIterator::class, $collection->getIterator());
+        $collection = new CollectionStub([new ValueStub('1'), new ValueStub('2')]);
+
+        $iterator = $collection->getIterator();
+        self::assertEquals(new ValueStub('1'), $iterator->offsetGet(0));
+        self::assertEquals(new ValueStub('2'), $iterator->offsetGet(1));
     }
 
     /**
-     * Not the same if they are not of the same type.
+     * Not the same if they values are not of the same type.
      *
      * @test
      */
     public function twoCollectionsAreNotSameValueIfDifferentTypes(): void
     {
-        $collection1 = $this->createCollectionMock('Type1', new ArrayIterator());
-        $collection2 = $this->createCollectionMock('Type2', new ArrayIterator());
+        $collection1 = new CollectionStub([]);
+        $collection2 = new OtherCollectionStub();
 
-        $this->assertFalse($collection1->sameValueAs($collection2));
+        self::assertFalse($collection1->sameValueAs($collection2));
     }
 
     /**
-     * Not the same if they have not the same amount of values.
+     * Not the same if collections have not the same amount of values.
      *
      * @test
      */
     public function twoCollectionsAreNotTheSameValueIfTheyHaveNotTheSameAmountOfValues(): void
     {
-        $iterator1 = $this->createMock(ArrayIterator::class);
-        $iterator1
-            ->expects($this->once())
-            ->method('count')
-            ->willReturn(1);
-        $collection1 = $this->createCollectionMock('CollectionType', $iterator1);
-
-        $iterator2 = $this->createMock(ArrayIterator::class);
-        $iterator2
-            ->expects($this->once())
-            ->method('count')
-            ->willReturn(2);
-        $collection2 = $this->createCollectionMock('CollectionType', $iterator2);
+        $collection1 = new CollectionStub([]);
+        $collection2 = new CollectionStub([new ValueStub('1')]);
 
         /** @var \DigipolisGent\Value\CollectionInterface $collection1 */
-        $this->assertFalse($collection1->sameValueAs($collection2));
+        self::assertFalse($collection1->sameValueAs($collection2));
     }
 
     /**
-     * Not the same if the collection item keys are not the same.
+     * Not the same if the collections item keys are not the same.
      *
      * @test
      */
     public function twoCollectionsAreNotTheSameIfArrayKeysAreDifferent(): void
     {
-        $value1 = $this->createMock(ValueInterface::class);
-        $iterator1 = new ArrayIterator([0 => $value1]);
-        $collection1 = $this->createCollectionMock('CollectionType', $iterator1);
+        $collection1 = new CollectionStub([1 => new ValueStub('1')]);
+        $collection2 = new CollectionStub([2 => new ValueStub('1')]);
 
-        $value2 = $this->createMock(ValueInterface::class);
-        $iterator2 = new ArrayIterator([1 => $value2]);
-        $collection2 = $this->createCollectionMock('CollectionType', $iterator2);
-
-        $this->assertFalse($collection1->sameValueAs($collection2));
+        self::assertFalse($collection1->sameValueAs($collection2));
     }
 
     /**
@@ -92,66 +77,22 @@ class CollectionAbstractTest extends TestCase
      */
     public function twoCollectionsAreNotTheSameIfHaveNotTheSameValues(): void
     {
-        $value1 = $this->createMock(ValueInterface::class);
-        $value1
-            ->expects($this->once())
-            ->method('sameValueAs')
-            ->willReturn(false);
-        $iterator1 = new ArrayIterator([$value1]);
-        $collection1 = $this->createCollectionMock('CollectionType', $iterator1);
+        $collection1 = new CollectionStub([new ValueStub('1')]);
+        $collection2 = new CollectionStub([new ValueStub('2')]);
 
-        $value2 = $this->createMock(ValueInterface::class);
-        $iterator2 = new ArrayIterator([$value2]);
-        $collection2 = $this->createCollectionMock('CollectionType', $iterator2);
-
-        $this->assertFalse($collection1->sameValueAs($collection2));
+        self::assertFalse($collection1->sameValueAs($collection2));
     }
 
     /**
-     * The same if the values on the same index the same.
+     * The same if the values on the same index are the same values.
      *
      * @test
      */
     public function twoCollectionsAreTheSameIfHaveTheSameValues(): void
     {
-        $value1 = $this->createMock(ValueInterface::class);
-        $value1
-            ->expects($this->once())
-            ->method('sameValueAs')
-            ->willReturn(true);
-        $iterator1 = new ArrayIterator([$value1]);
-        $collection1 = $this->createCollectionMock('CollectionType', $iterator1);
+        $collection1 = new CollectionStub([new ValueStub('1')]);
+        $collection2 = new CollectionStub([new ValueStub('1')]);
 
-        $value2 = $this->createMock(ValueInterface::class);
-        $iterator2 = new ArrayIterator([$value2]);
-        $collection2 = $this->createCollectionMock('CollectionType', $iterator2);
-
-        $this->assertTrue($collection1->sameValueAs($collection2));
-    }
-
-    /**
-     * Helper to Create a collection mock.
-     *
-     * @param string $name
-     *   The class name the mock should have.
-     * @param \ArrayIterator $iterator
-     *   The iterator the mocked abstract class should return.
-     *
-     * @return \DigipolisGent\Value\CollectionInterface|\PHPUnit\Framework\MockObject\MockObject
-     *   The mocked CollectionAbstract.
-     */
-    protected function createCollectionMock($name, ArrayIterator $iterator): CollectionInterface
-    {
-        $mock = $this
-            ->getMockBuilder(CollectionAbstract::class)
-            ->disableOriginalConstructor()
-            ->setMethods(array('getIterator'))
-            ->setMockClassName($name)
-            ->getMockForAbstractClass();
-        $mock
-            ->method('getIterator')
-            ->willReturn($iterator);
-
-        return $mock;
+        self::assertTrue($collection1->sameValueAs($collection2));
     }
 }
