@@ -38,7 +38,7 @@ class CollectionAbstractTest extends TestCase
     public function twoCollectionsAreNotSameValueIfDifferentTypes(): void
     {
         $collection1 = new CollectionStub([]);
-        $collection2 = new OtherCollectionStub([]);
+        $collection2 = new OtherCollectionStub();
 
         self::assertFalse($collection1->sameValueAs($collection2));
     }

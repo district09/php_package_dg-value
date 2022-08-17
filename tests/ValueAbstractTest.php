@@ -20,10 +20,10 @@ class ValueAbstractTest extends TestCase
      *
      * @test
      */
-    public function twoValuesAreNotTheSameTypeIfTheyDoNotHaveTheSameClassName(): void
+    public function twoValuesAreNotTheSameIfTheyAreNotBothSameClass(): void
     {
         $value1 = new ValueStub('Value 1');
-        $value2 = new OtherValueTypeStub('Value 1');
+        $value2 = new OtherValueTypeStub();
 
         self::assertFalse($value1->sameValueAs($value2));
     }
@@ -33,7 +33,7 @@ class ValueAbstractTest extends TestCase
      *
      * @test
      */
-    public function twoValuesAreTheSameTypeIfTheyHaveTheSameClassName(): void
+    public function twoValuesAreTheSameTypeIfTheyAreBothInstancesOfSameClass(): void
     {
         $value1 = new ValueStub('Value 1');
         $value2 = new ValueStub('Value 1');

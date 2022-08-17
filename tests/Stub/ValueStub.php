@@ -10,14 +10,14 @@ use DigipolisGent\Value\ValueInterface;
 /**
  * Stub implementing the ValueAbstract class.
  */
-class ValueStub extends ValueAbstract
+final class ValueStub extends ValueAbstract
 {
     /**
      * The actual value.
      *
      * @param string $value;
      */
-    private $value;
+    private string $value;
 
     /**
      * Create from string.

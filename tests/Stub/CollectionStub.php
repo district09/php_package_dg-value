@@ -9,7 +9,7 @@ use DigipolisGent\Value\CollectionAbstract;
 /**
  * Stub to test the collection functionality.
  */
-class CollectionStub extends CollectionAbstract
+final class CollectionStub extends CollectionAbstract
 {
     /**
      * Create collection from multiple values.
